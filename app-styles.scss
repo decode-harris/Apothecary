@@ -6,77 +6,49 @@
     
 }
 
+// header component
+.header {
+    display: flex;
+    justify-content: space-between; 
+    padding: 4% 9%;
+}
+
 // content wrapper
 .content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // application background or theme
-    // background: rgb(146, 208, 84); 
-
-    // dev
-    outline: 2px solid #000;
-}
-
-// herbalism list
-.herbs {
-
-    // display props [ flex ]
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    list-style-type: none;
-
     
+    // dimensions & spacing
+    max-width: 100vw;
+    min-height: 100vh;
 
+    overflow: hidden;
+    
     // dev
     outline: 2px solid #000;
-
-    width: 100%;
-    max-width: 100vw;
-
-    // list items
-    .items {
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-        // font-size: 1.2rem;
-        
-        
-
-        // dev
-        border: 2px solid red;
-        
-    }
-    img {
-        max-width: 100px;
-        max-height: 100px;
-
-        // dev
-        border: 2px solid purple;
-    }
 }
 
-// workbench
-.workbench {
-
+// ul [ workbench ]
+.workbench {    
+    
+    // display props [ grid ]
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(100px, auto);
 
-    padding: 15%;
+    // dimensions & spacing
+    padding: 5%;
+    height: 100%;
+    width: 100%;
     
+    // dev
+    border: 2px solid red;
+
+    // workbench items
     .items {
         display: flex;
         justify-content: center;
         align-items: center;
         border: 2px solid purple;
+        list-style-type: none;
     }
     .items:first-child,
     .items:last-child {
@@ -84,6 +56,7 @@
 
         max-width: 100%;
     }
+    // workbench items image
     img {
         max-width: 100px;
         max-height: 100px;
@@ -92,4 +65,46 @@
         border: 2px solid purple;
     }
     
+}
+
+// ul [ herbalism ]
+.herbs {
+    
+    // display props [ flex ]
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    // dimensions & spacing
+    width: 100%;
+    max-width: 100vw;
+
+    // component props
+    list-style-type: none;
+    
+    // dev
+    outline: 2px solid #000;
+
+    
+    // herbs list items
+    .items {
+
+        // display props [ flex ]
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        // dev
+        border: 2px solid red;
+        
+    }
+    // herbs items image
+    img {
+        max-width: 100px;
+        max-height: 100px;
+
+        // dev
+        border: 2px solid purple;
+    }
 }

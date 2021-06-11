@@ -1,14 +1,15 @@
-// const potion = document.querySelector('#potion');
-
 /*
+    Application JS 
 
-    display empty potion element [ default state ]
-    display herbalism ingredients list [ default state ]
+    An interactive apothecary that features inspiration
+    from the world of warcraft professions herbalism & alchemy
 
-    create herbalism plant properties objects [ herbalism object array ]
-    
-    
-    add ingredient properties together [ experiment ]
+        1. Display empty potion element [ default state ]
+        2. Display herbalism ingredients list [ default state ]
+        3. Create herbalism plant properties objects [ herbalism object array ]
+
+
+        x. Add ingredient properties together [ alchemy function ]
 
 
 */
@@ -52,16 +53,39 @@ function defaultState() {
 // init function [ defaultState ] : create onload listener on production build
 defaultState();
 
+
+// function [ resetState ] : resets image view inside workbench
+function resetState() {
+
+    // remove workbench images from view
+    img_left.remove();
+    img_right.remove();
+
+    // test
+    console.log('STATE : reset');
+        
+}
+
+const resetBtn = document.querySelector('#resetBtn');
+resetBtn.addEventListener('click', ()=> {
+
+    // init function [ reset state ] : resets workbench images
+    resetState();
+
+});
+
 /*
-    herbalism objects array
+    herbs objects array*/
+let herbs = [
 
-    contains : 
-        herb name
-        herb img
-        herb color
-
-*/
-let herbalism = [
+    /*  
+        herb objects entries
+        contains : 
+            herb official name
+            herb img for alchemy ingredient selection
+            herb color for base transformation
+            herb size for applying height & width values
+    */
     liferoot = {
         name: "liferoot",
         image: "herbs/Plant_1.png",
@@ -97,14 +121,15 @@ let herbalism = [
 
 
 /*
-    alchemy function
+    herbalism function
 
     validates a position for herbs on the workbench
     reactively assign an image of the selected herb
     creates a unique ID for each element
 */
-function alchemy() {
+function herbalism() {
 
+    // define & select the herbs for workbench validation
     let herb_liferoot = document.querySelector('#liferoot');
     let herb_wildvine = document.querySelector('#wildvine');
     let herb_sungrass = document.querySelector('#sungrass');
@@ -136,21 +161,23 @@ function alchemy() {
         }
         else {
 
+            // revent image id's back to default
             img_left.id = '';
             img_right.id = '';
+
+            // alert the user
+            alert('workbech area is full!');
+         
             // test
             console.log('workbech area is full');
-            
-            
         }
     
     });
 
     // validate herb [ wildvine ] image position
     herb_wildvine.addEventListener('click', ()=> {
-
         
-        if (herb_left.firstChild === null) {
+        if (herb_left.firstElementChild === null) {
             
             // create an image element for the herb : wildvine
             img_left.src = wildvine.image;
@@ -158,36 +185,39 @@ function alchemy() {
             herb_left.appendChild(img_left);
 
             // test
-            console.log('herb : WILDVINE applied to left side');
-
-            // test
-            console.log(herb_left.firstChild);
-
-            
+            console.log('herb : wildvine applied to left side');
         }
-        else if (herb_left.firstChild != null && herb_left.firstChild.id != 'herb_wildvine') {
+        else if (herb_right.firstElementChild === null) {
 
-            // create an image for the herb : wildvine
+            // create an image element for the herb : wildvine
             img_right.src = wildvine.image;
             img_left.id = 'herb_wildvine';
             herb_right.appendChild(img_right);
 
             // test
-            console.log('herb : WILDVINE applied to right side');
+            console.log('herb : wildvine applied to right side');
         }
         else {
 
-            // create default conditions
+            // revent image id's back to default
+            img_left.id = '';
+            img_right.id = '';
+
+            // alert the user
+            alert('workbech area is full!');
+         
+            // test
+            console.log('workbech area is full');
             
         }
     
     });
-    
+
     // validate herb [ sungrass ] image position
     herb_sungrass.addEventListener('click', ()=> {
-
         
-        if (herb_left.firstChild === null) {
+        // validate herb placement
+        if (herb_left.firstElementChild === null) {
             
             // create an image element for the herb : sungrass
             img_left.src = sungrass.image;
@@ -195,109 +225,37 @@ function alchemy() {
             herb_left.appendChild(img_left);
 
             // test
-            console.log('herb : SUNGRASS applied to left side');
-
-            // test
-            console.log(herb_left.firstChild);
-
-            
+            console.log('herb : sungrass applied to left side');
         }
-        else if (herb_left.firstChild != null && herb_left.firstChild.id != 'herb_sungrass') {
+        else if (herb_right.firstElementChild === null) {
 
-            // create an image for the herb : sungrass
+            // create an image element for the herb : sungrass
             img_right.src = sungrass.image;
             img_left.id = 'herb_sungrass';
             herb_right.appendChild(img_right);
 
             // test
-            console.log('herb : SUNGRASS applied to right side');
+            console.log('herb : sungrass applied to right side');
         }
         else {
 
-            // create default conditions
-            
+            // revent image id's back to default
+            img_left.id = '';
+            img_right.id = '';
+
+            // alert the user
+            alert('workbech area is full!');
+         
+            // test
+            console.log('workbech area is full');
         }
     
     });
 
-    // // validate herb [ swampweed ] image position
-    // herb_swampweed.addEventListener('click', ()=> {
-
-        
-    //     if (herb_left.firstChild === null) {
-            
-    //         // create an image element for the herb : swampweed
-    //         img_left.src = swampweed.image;
-    //         img_left.id = 'herb_swampweed';
-    //         herb_left.appendChild(img_left);
-
-    //         // test
-    //         console.log('herb : SWAMPWEED applied to left side');
-
-    //         // test
-    //         console.log(herb_left.firstChild);
-
-            
-    //     }
-    //     else if (herb_left.firstChild != null && herb_left.firstChild.id != 'herb_swampweed') {
-
-    //         // create an image for the herb : swampweed
-    //         img_right.src = swampweed.image;
-    //         img_left.id = 'herb_swampweed';
-    //         herb_right.appendChild(img_right);
-
-    //         // test
-    //         console.log('herb : SWAMPWEED applied to right side');
-    //     }
-    //     else {
-
-    //         // create default conditions
-            
-    //     }
-    
-    // });
-
-    // // validate herb [ poisonivy ] image position
-    // herb_poisonivy.addEventListener('click', ()=> {
-
-        
-    //     if (herb_left.firstChild === null) {
-            
-    //         // create an image element for the herb : poisonivy
-    //         img_left.src = poisonivy.image;
-    //         img_left.id = 'herb_poisonivy';
-    //         herb_left.appendChild(img_left);
-
-    //         // test
-    //         console.log('herb : poisonivy applied to left side');
-
-    //         // test
-    //         console.log(herb_left.firstChild);
-
-            
-    //     }
-    //     else if (herb_left.firstChild != null && herb_left.firstChild.id != 'herb_poisonivy') {
-
-    //         // create an image for the herb : poisonivy
-    //         img_right.src = poisonivy.image;
-    //         img_left.id = 'herb_poisonivy';
-    //         herb_right.appendChild(img_right);
-
-    //         // test
-    //         console.log('herb : poisonivy applied to right side');
-    //     }
-    //     else {
-
-    //         // create default conditions
-            
-    //     }
-    
-    // });
-
 }
 
-// init alchemy function
-alchemy();
+// init herbalism function
+herbalism();
 
 function alchemyExperiement() {
 
@@ -308,9 +266,3 @@ function alchemyExperiement() {
 
 }
 
-function resetState() {
-    if (herb_left.firstChild == img) {
-        herb_left.removeChild(img);
-    }
-        
-}

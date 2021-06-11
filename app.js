@@ -153,17 +153,17 @@ function herbalism() {
 
             // create an image element for the herb : liferoot
             img_right.src = liferoot.image;
-            img_left.id = 'herb_liferoot';
+            img_right.id = 'herb_liferoot';
             herb_right.appendChild(img_right);
 
             // test
-            console.log('herb : LIFEROOT applied to right side');
+            console.log('herb : LIFEROOT applied to right side ' + img_right.id);
         }
         else {
 
             // revent image id's back to default
-            img_left.id = '';
-            img_right.id = '';
+            // img_left.id = '';
+            // img_right.id = '';
 
             // alert the user
             alert('workbech area is full!');
@@ -185,23 +185,23 @@ function herbalism() {
             herb_left.appendChild(img_left);
 
             // test
-            console.log('herb : wildvine applied to left side');
+            console.log('herb : WILDVINE applied to left side');
         }
         else if (herb_right.firstElementChild === null) {
 
             // create an image element for the herb : wildvine
             img_right.src = wildvine.image;
-            img_left.id = 'herb_wildvine';
+            img_right.id = 'herb_wildvine';
             herb_right.appendChild(img_right);
 
             // test
-            console.log('herb : wildvine applied to right side');
+            console.log('herb : WILDVINE applied to right side');
         }
         else {
 
             // revent image id's back to default
-            img_left.id = '';
-            img_right.id = '';
+            // img_left.id = '';
+            // img_right.id = '';
 
             // alert the user
             alert('workbech area is full!');
@@ -231,17 +231,18 @@ function herbalism() {
 
             // create an image element for the herb : sungrass
             img_right.src = sungrass.image;
-            img_left.id = 'herb_sungrass';
+            img_right.id = 'herb_sungrass';
             herb_right.appendChild(img_right);
 
             // test
             console.log('herb : sungrass applied to right side');
+            
         }
         else {
 
             // revent image id's back to default
-            img_left.id = '';
-            img_right.id = '';
+            // img_left.id = '';
+            // img_right.id = '';
 
             // alert the user
             alert('workbech area is full!');
@@ -257,11 +258,28 @@ function herbalism() {
 // init herbalism function
 herbalism();
 
-function alchemyExperiement() {
+const alchemyBtn = document.querySelector('#alchemy');
 
-    let experiment1 = type1 + type2;
-    let experiment2 = type1 + type3;
-    let experiment3 = type2 + type3;
+alchemyBtn.addEventListener('click', ()=> {
+
+    if (img_left.id != null && img_right.id != null) {
+        console.log('LEFT : ' + img_left.id + ' + ' +  ' RIGHT : ' + img_right.id + ' = Major Healing Potion');
+    }
+
+    
+    
+})
+
+function alchemy() {
+
+    let potion_purple = 'beaker/beaker-purple.png';
+
+
+
+
+    // let experiment1 = type1 + type2;
+    // let experiment2 = type1 + type3;
+    // let experiment3 = type2 + type3;
 
 
 }

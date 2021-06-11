@@ -38,6 +38,7 @@ function defaultState() {
     let img = document.createElement('img');
     img.style.height = '200px';
     img.style.width = '200px';
+    img.id = 'beaker';
     img.src = 'beaker/beaker-default.png';
     // img.src = 'beaker-default-white.png';
     
@@ -88,30 +89,35 @@ let herbs = [
     */
     liferoot = {
         name: "liferoot",
+        id: "herb_liferoot",
         image: "herbs/Plant_1.png",
         color: "red",
         size: 100,
     },
     wildvine = {
         name: "wildvine",
+        id: "herb_wildvine",
         image: "herbs/Plant_2.png",
         color: "blue",
         size: 100,
     },
     sungrass = {
         name: "sungrass",
+        id: "herb_sungrass",
         image: "herbs/Plant_3.png",
         color: "orange",
         size: 100,
     },
     swampweed = {
         name: "swampweed",
+        id: "herb_",
         image: "herbs/Plant_4.png",
         color: "green",
         size: 100,
     },
     poisonivy = {
         name: "poisonivy",
+        id: "herb_",
         image: "herbs/Plant_5.png",
         color: "purple",
         size: 100,
@@ -143,7 +149,7 @@ function herbalism() {
             
             // create an image element for the herb : liferoot
             img_left.src = liferoot.image;
-            img_left.id = 'herb_liferoot';
+            img_left.id = liferoot.id;
             herb_left.appendChild(img_left);
 
             // test
@@ -262,25 +268,72 @@ const alchemyBtn = document.querySelector('#alchemy');
 
 alchemyBtn.addEventListener('click', ()=> {
 
+    // condense validation of ID's & potion selection
     if (img_left.id != null && img_right.id != null) {
         console.log('LEFT : ' + img_left.id + ' + ' +  ' RIGHT : ' + img_right.id + ' = Major Healing Potion');
     }
 
+    // validate liferoot id
+    if (img_left.id === liferoot.id) {
+
+        // test
+        console.log('INGREDIENT 1 : liferoot');
+    }
+    if(img_right.id === liferoot.id) {
+
+        // test
+        console.log('INGREDIENT 2 : liferoot');
+    }
+    // validate wildvine id
+    if(img_left.id === wildvine.id) {
+        
+        // test
+        console.log('INGREDIENT 1 : wildvine');
+    }
+    if(img_right.id === wildvine.id) {
+
+        // test
+        console.log('INGREDIENT 2 : wildvine');
+    }
+    // validate sungrass id
+    if(img_left.id === sungrass.id) {
+        
+        // test
+        console.log('INGREDIENT 1 : sungrass');
+    }
+    if(img_right.id === sungrass.id) {
+
+        // test
+        console.log('INGREDIENT 2 : sungrass');
+    }
+
+
+    // init function [ alchemy ]
+    alchemy();
     
     
 })
 
 function alchemy() {
 
+    // potion.firstElementChild.remove();
+
+    let beaker = document.querySelector('#beaker');
     let potion_purple = 'beaker/beaker-purple.png';
 
+    beaker.setAttribute('src', potion_purple);
+    
+    // let img = document.createElement('img');
+    
+    
+    
+    
+    console.log('POTION COLOR : ' + potion_purple);
+    
 
+    
 
-
-    // let experiment1 = type1 + type2;
-    // let experiment2 = type1 + type3;
-    // let experiment3 = type2 + type3;
-
-
+    // init function [ resetState ]
+    resetState();
 }
 

@@ -38,10 +38,17 @@
   grid-column: span 2;
   max-width: 100%;
 }
+.workbench .workarea:nth-child(2),
+.workbench .workarea:nth-child(3) {
+  grid-row: span 2;
+}
 .workbench img {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 200px;
+  max-height: 200px;
   border: 2px solid purple;
+}
+.workbench img#beaker {
+  height: 150px;
 }
 
 .herbs {

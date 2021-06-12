@@ -19,8 +19,9 @@ const herb_left = document.querySelector('#left');
 const herb_right = document.querySelector('#right');
 
 // define left & right image elements
-const img_left = document.createElement('img');
-const img_right = document.createElement('img');
+const img_left = document.querySelector('#img-left');
+const img_right = document.querySelector('#img-right');
+
 
 // define & create a button to attach the alchemy function
 const btn = document.querySelector('#btn');
@@ -59,11 +60,20 @@ defaultState();
 function resetState() {
 
     // remove workbench images from view
-    img_left.remove();
-    img_right.remove();
+    // img_left.remove();
+    // img_right.remove();
+
+    // img_left.src = '';
+    // img_right.src = '';
 
     // test
     console.log('STATE : reset');
+
+    let beaker = document.querySelector('#beaker');
+
+    // init function [ reset vial ]
+    resetVial();
+    
         
 }
 
@@ -74,6 +84,23 @@ resetBtn.addEventListener('click', ()=> {
     resetState();
 
 });
+
+// function [ resetVial ] : returns vial back to default view
+function resetVial() {
+
+    // reset beaker back to default
+    let beaker = document.querySelector('#beaker');
+    beaker.setAttribute('src', 'beaker/beaker-default.png');
+
+    if (beaker.src != 'beaker/beaker-default.png') {
+        beaker.src = 'beaker/beaker-default.png';
+
+        // test
+        console.log('reset vial color');
+    }
+
+
+}
 
 /*
     herbs objects array*/
@@ -89,7 +116,7 @@ let herbs = [
     */
     liferoot = {
         name: "liferoot",
-        id: "herb_liferoot",
+        id: "liferoot",
         image: "herbs/Plant_1.png",
         color: "red",
         size: 100,
@@ -125,6 +152,9 @@ let herbs = [
     },
 ];
 
+// set herbs as undefined || no value
+let herb1 = '';
+let herb2;
 
 /*
     herbalism function
@@ -133,136 +163,181 @@ let herbs = [
     reactively assign an image of the selected herb
     creates a unique ID for each element
 */
-function herbalism() {
+// function herbalism() {
 
-    // define & select the herbs for workbench validation
-    let herb_liferoot = document.querySelector('#liferoot');
-    let herb_wildvine = document.querySelector('#wildvine');
-    let herb_sungrass = document.querySelector('#sungrass');
-    let herb_swampweed = document.querySelector('#swampweed');
-    let herb_poisonivy = document.querySelector('#poisonivy');
+//     // define & select the herbs for workbench validation
+//     let herb_liferoot = document.querySelector('#liferoot');
+//     let herb_wildvine = document.querySelector('#wildvine');
+//     let herb_sungrass = document.querySelector('#sungrass');
+//     let herb_swampweed = document.querySelector('#swampweed');
+//     let herb_poisonivy = document.querySelector('#poisonivy');
 
-    // validate herb [ liferoot ] image position
-    herb_liferoot.addEventListener('click', ()=> {
-        
-        if (herb_left.firstElementChild === null) {
+//     let left = document.querySelector('#left');
+//     let right = document.querySelector('#right');
+
+//     let items = document.querySelectorAll('.items');
+
+//     items.forEach(element => {
+//         element.addEventListener('click', ()=> {
+
+//             herb1 = element.id;
+
+//             console.log('herb 1 : ' + herb1);
+
             
-            // create an image element for the herb : liferoot
-            img_left.src = liferoot.image;
-            img_left.id = liferoot.id;
-            herb_left.appendChild(img_left);
+//         });
+//     });
 
-            // test
-            console.log('herb : LIFEROOT applied to left side');
-        }
-        else if (herb_right.firstElementChild === null) {
-
-            // create an image element for the herb : liferoot
-            img_right.src = liferoot.image;
-            img_right.id = 'herb_liferoot';
-            herb_right.appendChild(img_right);
-
-            // test
-            console.log('herb : LIFEROOT applied to right side ' + img_right.id);
-        }
-        else {
-
-            // revent image id's back to default
-            // img_left.id = '';
-            // img_right.id = '';
-
-            // alert the user
-            alert('workbech area is full!');
-         
-            // test
-            console.log('workbech area is full');
-        }
     
-    });
 
-    // validate herb [ wildvine ] image position
-    herb_wildvine.addEventListener('click', ()=> {
+//     // validate herb [ liferoot ] image position
+//     herb_liferoot.addEventListener('click', ()=> {
+
+//         // console.log();
         
-        if (herb_left.firstElementChild === null) {
-            
-            // create an image element for the herb : wildvine
-            img_left.src = wildvine.image;
-            img_left.id = 'herb_wildvine';
-            herb_left.appendChild(img_left);
-
-            // test
-            console.log('herb : WILDVINE applied to left side');
-        }
-        else if (herb_right.firstElementChild === null) {
-
-            // create an image element for the herb : wildvine
-            img_right.src = wildvine.image;
-            img_right.id = 'herb_wildvine';
-            herb_right.appendChild(img_right);
-
-            // test
-            console.log('herb : WILDVINE applied to right side');
-        }
-        else {
-
-            // revent image id's back to default
-            // img_left.id = '';
-            // img_right.id = '';
-
-            // alert the user
-            alert('workbech area is full!');
-         
-            // test
-            console.log('workbech area is full');
-            
-        }
-    
-    });
-
-    // validate herb [ sungrass ] image position
-    herb_sungrass.addEventListener('click', ()=> {
+//         console.log('herb 1 : ' + herb1);
         
-        // validate herb placement
-        if (herb_left.firstElementChild === null) {
+//         if (herb1 === '') {
+//             herb1 = liferoot.id;
+//             left.src = liferoot.image;
+//         }
+//         else if (herb1 != '' || herb1 === liferoot.id) {
+//             alert('please use a different herb to complete the potion');
+//             return
             
-            // create an image element for the herb : sungrass
-            img_left.src = sungrass.image;
-            img_left.id = 'herb_sungrass';
-            herb_left.appendChild(img_left);
+//         }
+//         else {
+//             herb2 = liferoot.id;
+//             right.src = liferoot.image;
 
-            // test
-            console.log('herb : sungrass applied to left side');
-        }
-        else if (herb_right.firstElementChild === null) {
+//             console.log('herb1 not is liferoot');
+//         }
 
-            // create an image element for the herb : sungrass
-            img_right.src = sungrass.image;
-            img_right.id = 'herb_sungrass';
-            herb_right.appendChild(img_right);
-
-            // test
-            console.log('herb : sungrass applied to right side');
-            
-        }
-        else {
-
-            // revent image id's back to default
-            // img_left.id = '';
-            // img_right.id = '';
-
-            // alert the user
-            alert('workbech area is full!');
-         
-            // test
-            console.log('workbech area is full');
-        }
+//         console.log(herb1 + ' finalised function');
     
-    });
+//     });
 
-}
+//     // validate herb [ wildvine ] image position
+//     herb_wildvine.addEventListener('click', ()=> {
 
-// init herbalism function
-herbalism();
+//         console.log('herb 1 : ' + herb1);
+        
+//         if (herb1 === '') {
+//             herb1 = wildvine.id;
+//             left.src = wildvine.image;
+//         }
+//         else if (herb1 != '' || herb1 === wildvine.id) {
+//             alert('please use a different herb to complete the potion');
+//             return
+            
+//         }
+//         else {
+
+//             right.src = wildvine.image;
+
+//             console.log('herb1 not is liferoot');
+//         }
+
+//         console.log(herb1 + ' finalised function');
+
+//         // if (left.src === wildvine.image) {
+            
+//         //     alert('please you a differnt herb to complete the potion!');
+//         // }
+//         // if (left.src != null && right.src === '') {
+//         //     right.src = wildvine.image;
+//         //     // test
+//         //     console.log('img left : ' + left.src);
+//         // }
+//         // else {
+//         //     left.src = wildvine.image
+//         // }
+        
+//         // if (herb_left.firstElementChild === null) {
+            
+//         //     // create an image element for the herb : wildvine
+//         //     img_left.src = wildvine.image;
+//         //     img_left.id = 'herb_wildvine';
+//         //     herb_left.appendChild(img_left);
+
+//         //     // test
+//         //     console.log('herb : WILDVINE applied to left side');
+//         // }
+//         // else if (herb_right.firstElementChild === null) {
+
+//         //     // create an image element for the herb : wildvine
+//         //     img_right.src = wildvine.image;
+//         //     img_right.id = 'herb_wildvine';
+//         //     herb_right.appendChild(img_right);
+
+//         //     // test
+//         //     console.log('herb : WILDVINE applied to right side');
+//         // }
+//         // else {
+
+//         //     // revent image id's back to default
+//         //     // img_left.id = '';
+//         //     // img_right.id = '';
+
+//         //     // alert the user
+//         //     alert('workbech area is full!');
+         
+//         //     // test
+//         //     console.log('workbech area is full');
+            
+//         // }
+    
+//     });
+
+
+
+//     // // validate herb [ sungrass ] image position
+//     // herb_sungrass.addEventListener('click', ()=> {
+        
+//     //     // validate herb placement
+//     //     if (left.src) {
+            
+//     //         // create an image element for the herb : sungrass
+//     //         img_left.src = sungrass.image;
+//     //         img_left.id = 'herb_sungrass';
+//     //         herb_left.appendChild(img_left);
+
+//     //         // test
+//     //         console.log('herb : sungrass applied to left side');
+//     //     }
+//     //     else if (herb_right.firstElementChild === null) {
+
+//     //         // create an image element for the herb : sungrass
+//     //         img_right.src = sungrass.image;
+//     //         img_right.id = 'herb_sungrass';
+//     //         herb_right.appendChild(img_right);
+
+//     //         // test
+//     //         console.log('herb : sungrass applied to right side');
+            
+//     //     }
+//     //     else {
+
+//     //         // revent image id's back to default
+//     //         // img_left.id = '';
+//     //         // img_right.id = '';
+
+//     //         // alert the user
+//     //         alert('workbech area is full!');
+         
+//     //         // test
+//     //         console.log('workbech area is full');
+//     //     }
+    
+//     // });
+
+
+
+
+// }
+
+// // init herbalism function
+// herbalism();
 
 const alchemyBtn = document.querySelector('#alchemy');
 
@@ -334,6 +409,6 @@ function alchemy() {
     
 
     // init function [ resetState ]
-    resetState();
+    // resetState();
 }
 

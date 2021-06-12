@@ -43,15 +43,15 @@
     border: 2px solid red;
 
     // workbench items
-    .items {
+    .workarea {
         display: flex;
         justify-content: center;
         align-items: center;
         border: 2px solid purple;
         list-style-type: none;
     }
-    .items:first-child,
-    .items:last-child {
+    .workarea:first-child,
+    .workarea:last-child {
         grid-column: span 2;
 
         max-width: 100%;

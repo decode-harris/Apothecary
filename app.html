@@ -10,6 +10,9 @@
 
     <!-- app [ application functionality ] -->
     <script defer src="app.js"></script>
+
+    <!-- validation [ global herbalism validation ] -->
+    <!-- <script defer src="validation.js"></script> -->
     
 </head>
 <body>
@@ -24,30 +27,41 @@
     </header>
     <!-- header -->
 
-    <!-- content wrapper -->
-    <section class="content">
+    <main class="main">
 
         <!-- workbench list -->
         <ul class="workbench">
             
             <!-- empty potion container -->
-            <li class="items" id="potion"></li>
+            <li class="workarea" id="potion"></li>
             <!-- empty potion container -->
 
             <!-- selected image placement -->
-            <li class="items" id="left"></li>
-            <li class="items" id="right"></li>
+            <li class="workarea" id="">
+                <!-- image left -->
+                <img src="" alt="" id="left">
+                <!-- image left -->
+            </li>
+            <li class="workarea" id="">
+                <!-- image right -->
+                <img src="" alt="" id="right">
+                <!-- image right -->
+            </li>
             <!-- selected image placement -->
 
             <!-- create button -->
-            <li class="items" id="btn">
+            <li class="workarea" id="btn">
                 <button class="btn" id="alchemy">mix</button>
             </li>
             <!-- create button -->
 
         </ul>
         <!-- workbench list -->
-        
+
+    </main>
+
+    <!-- content wrapper -->
+    <section class="content">
 
         <!-- herbalism list -->
         <ul class="herbs">

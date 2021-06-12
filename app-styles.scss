@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+
 // css reset
 * {
     box-sizing: border-box;
@@ -6,24 +8,47 @@
     
 }
 
+// css variables 
+:root {
+
+    // fonts
+    --font: 'Viaoda Libre', cursive;
+
+    // spacing
+    --sm: 2%;
+    --md: 5%;
+    --lg: 10%;
+
+    // dev borders
+    // --wireframe: 2px solid darkblue;
+    // --debugging: 2px solid darkred;
+    // --component: 2px solid darkgreen;
+}
+
+html, body {
+    font-family: var(--font);
+}
+
 // header component
 .header {
     display: flex;
     justify-content: space-between; 
     padding: 4% 9%;
+    text-transform: capitalize;
+    text-decoration: underline;
+    letter-spacing: 0.12rem;
+}
+.header button {
+    border: 2px solid black;
+    max-width: 60px;
 }
 
 // content wrapper
 .content {
-    
     // dimensions & spacing
     max-width: 100vw;
     min-height: 100vh;
-
     overflow: hidden;
-    
-    // dev
-    outline: 2px solid #000;
 }
 
 // ul [ workbench ]
@@ -40,15 +65,17 @@
     width: 100%;
     
     // dev
-    border: 2px solid red;
-
+    border: var(--component);
+    
     // workbench items
     .workarea {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid purple;
         list-style-type: none;
+
+        // dev
+        // border: 2px solid purple;
     }
     .workarea:first-child,
     .workarea:last-child {
@@ -66,12 +93,24 @@
         max-height: 200px;
 
         // dev
-        border: 2px solid purple;
+        // border: 2px solid purple;
     }
     img#beaker {
         height: 150px;
     }
     
+}
+.btn {
+    width: 100px;
+    
+}
+#mix {
+    border: 2px solid #000;
+    padding: var(--sm);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    min-width: 265px;
 }
 
 // ul [ herbalism ]
@@ -90,7 +129,7 @@
     list-style-type: none;
     
     // dev
-    outline: 2px solid #000;
+    border: var(--wireframe);
 
     
     // herbs list items
@@ -103,15 +142,13 @@
         align-items: center;
         
         // dev
-        border: 2px solid red;
+        border: var(--debugging);
+        
         
     }
     // herbs items image
     img {
         max-width: 100px;
         max-height: 100px;
-
-        // dev
-        border: 2px solid purple;
     }
 }

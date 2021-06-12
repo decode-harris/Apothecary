@@ -11,6 +11,9 @@
     <!-- app [ application functionality ] -->
     <script defer src="app.js"></script>
 
+    <!-- font awesome [ icon library ] -->
+    <script src="https://kit.fontawesome.com/4dff4a55ad.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -19,7 +22,11 @@
 
         <h1>apothecary</h1>
         
-        <button class="btn" id="resetBtn">reset</button>
+        <button class="btn" id="resetBtn">
+            <!-- font awesome [ redo-alt ] -->
+            <i class="fas fa-redo-alt"></i>
+            <!-- font awesome [ redo-alt ] -->
+        </button>
 
     </header>
     <!-- header -->
@@ -30,7 +37,9 @@
         <ul class="workbench">
             
             <!-- empty potion container -->
-            <li class="workarea" id="potion"></li>
+            <li class="workarea" id="potion">
+                <h3 id="name"></h3>
+            </li>
             <!-- empty potion container -->
 
             <!-- selected image placement -->

@@ -69,12 +69,27 @@ let potions = [
 
 ];
 
+// herbalism ingredients variables
 let herb1 = '';
 let herb2 = '';
 
+// left & right image html element selectors
 let left = document.querySelector('#left');
 let right = document.querySelector('#right');
 
+
+// name of alchemy recipe selector
+let name = document.querySelector('#name');
+
+/*
+    function [ herbalism ]
+
+    reactively apply the potion icon to the page
+    create ingredient values via numbered herb variables
+    assign the selected herbs as a visual cue
+    run the alchemy function if validation is sucessful
+    
+*/
 function herbalism() {
 
     // select potion elementt
@@ -97,9 +112,23 @@ function herbalism() {
     // for each [ items ]
     items.forEach(element => {
 
+        let beaker = document.querySelector('#beaker');
+        let name = document.querySelector('#name');
+
         // element [ items ] click event
         element.addEventListener('click', ()=> {
 
+            // after a recipe has been completed
+            if (beaker.src != 'beaker/beaker-default.png') {
+                
+                // reset the beaker to default
+                beaker.src = 'beaker/beaker-default.png';
+
+                // also reset the name of the potion to an empty string
+                name.innerHTML = '';
+            }
+
+            
             // validate herb1 value
             if (herb1 === '') {
 
@@ -113,11 +142,17 @@ function herbalism() {
 
                     // test
                     console.log('herb left : liferoot');
+
+                    // init function [ alchemy ]
+                    alchemy();
                 }
                 if (element.id === wildvine.id) {
                     
                     // assign left image source to wildvine source
                     left.src = wildvine.src;
+
+                    // init function [ alchemy ]
+                    alchemy();
 
                     // test
                     console.log('herb left : wildvine');
@@ -127,6 +162,9 @@ function herbalism() {
                     // assign left image source to sungrass source
                     left.src = sungrass.src;
 
+                    // init function [ alchemy ]
+                    alchemy();
+
                     // test
                     console.log('herb left : sungrass');
                 }
@@ -134,8 +172,8 @@ function herbalism() {
                 // test
                 console.log('herb 1 : ' + herb1);
             }
-            // validate herb1 is not empty & is not already the sane id
-            if (herb1 != '' && herb1 != element.id) {
+            // validate herb1 is not empty & is not already the same id
+            if (herb1 != '' && herb1 != element.id || herb1 != '' && herb2 != '') {
                 // assign element id to herb 2
                 herb2 = element.id;
 
@@ -146,6 +184,7 @@ function herbalism() {
 
                     // test
                     console.log('herb right : liferoot');
+                
                 }
                 if (herb2 === wildvine.id) {
 
@@ -172,7 +211,7 @@ function herbalism() {
                 console.log('mix : ' + herb1 + ' + ' + herb2); 
 
                 // init function [ alchemy ]
-                alchemy();        
+                // alchemy();        
                    
             }
         
@@ -184,7 +223,16 @@ function herbalism() {
 // init function [ herbalism ]
 herbalism();
 
-// 
+/* 
+    function [ alchemy ] 
+
+    attaches a click event to the mix button
+    validates specific alchemy recipes
+    displays the appropriate colored beaker on 
+    sucessful selection & creation
+
+
+*/
 function alchemy() {
 
     // alchemy potion image selector
@@ -192,6 +240,8 @@ function alchemy() {
 
     // alchemy mix button selector
     let mix = document.querySelector('#mix');
+
+    
     
     // mix button click event
     mix.addEventListener('click', ()=> {
@@ -200,12 +250,31 @@ function alchemy() {
         console.log('mix H1 : ' + herb1);
         console.log('mix H2 : ' + herb2);
 
+        // validate if no herb is chosen
+        if (herb1 === '' && herb2 === '') {
+            // helper component alert
+            alert('please choose a starting herb');
+
+            // test
+            console.log('herb 1 has no value, herb 2 has no value')
+        }
+        if (herb1 != '' && herb2 === '') {
+            // helper component alert
+            alert('please use two herbs to create a potion!');
+
+            // test
+            console.log('herb 1 has a value, herb 2 has no value');
+        }   
+        // validate if herb1 has a value & herb2 has a value
         if (herb1 != '' & herb2 != '') {
 
             // validate specific alchemy recipes
             if (herb1 === liferoot.id && herb2 === wildvine.id || herb1 === wildvine.id && herb2 === liferoot.id) {
                 // apply major health potion image to vial
                 beaker.src = majorhealth.src;
+
+                // assign name of potion to html element
+                name.innerHTML = majorhealth.name;
 
                 // test
                 console.log('POTION : health potion');
@@ -214,12 +283,18 @@ function alchemy() {
                 // apply major mana potion image to vial
                 beaker.src = majormana.src;
 
+                // assign name of potion to html element
+                name.innerHTML = majormana.name;
+
                 // test
                 console.log('POTION : mana potion');
             }
             if (herb1 === wildvine.id && herb2 === sungrass.id || herb1 === sungrass.id && herb2 === wildvine.id) {
                 // apply invisible potion image to vial
                 beaker.src = invisible.src;
+
+                // assign name of potion to html element
+                name.innerHTML = invisible.name;
 
                 // test
                 console.log('POTION : invisibility elixir');
@@ -228,6 +303,9 @@ function alchemy() {
             // init function [ resetPanels ]
             resetProperties();
         }
+        else {
+            
+        }
     });
     
     // test
@@ -235,24 +313,27 @@ function alchemy() {
 }
 
 
+let resetBtn = document.querySelector('#resetBtn');
+// reset button click event
+resetBtn.addEventListener('click', ()=> {
+    name.innerHTML = '';
+    herb1 = '';
+    herb2 = '';
+    left.src = '';
+    right.src = '';
+    beaker.src = 'beaker/beaker-default.png';
+
+});
+
 function resetProperties() {
     
-    let resetBtn = document.querySelector('#resetBtn');
+    
 
     left.src = '';
     right.src = '';
     herb1 = '';
     herb2 = '';
-
-    // reset button click event
-    resetBtn.addEventListener('click', ()=> {
-        herb1 = '';
-        herb2 = '';
-        left.src = '';
-        right.src = '';
-        beaker.src = 'beaker/beaker-default.png';
-
-    });
+    
 
 }
 

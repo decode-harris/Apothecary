@@ -20,6 +20,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   padding: 4% 9%;
+  height: 15vh;
   text-transform: capitalize;
   text-decoration: underline;
   letter-spacing: 0.12rem;
@@ -32,7 +33,7 @@ html, body {
 
 .content {
   max-width: 100vw;
-  min-height: 100vh;
+  min-height: 85vh;
   overflow: hidden;
 }
 
@@ -65,8 +66,9 @@ html, body {
   flex-direction: column;
 }
 .workbench img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
+  border: none;
 }
 .workbench img#beaker {
   height: 150px;
